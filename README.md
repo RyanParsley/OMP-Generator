@@ -26,7 +26,7 @@ events:
 ---
 # Feel free to put content here
 
-But you don't have to. This space offers as a place to put content not
+But you don't have to. This space offers a place to put content not
 in one of the linked files.
 ```
 Next, create one markdown file for each section of the email in this
