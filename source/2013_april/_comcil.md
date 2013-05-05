@@ -28,5 +28,5 @@ Community Council will meet on April 30 beginning at 1:00 p.m. and adjourning at
 **Community**
 
 -   Results of faculty discussion on Community Meeting structure
--   Community Meeting and Chat ’n Chew
+-   Community Meeting and Chat 'n Chew
 -   Add future agenda items
