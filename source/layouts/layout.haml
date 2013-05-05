@@ -146,8 +146,13 @@
               %td{:valign => "top", :width => "600", :colspan => "3"}
                 %img{:alt => "ONE MORGAN PLACE :: Community Bulletin", :border => "0", :src => "https://origin.ih.constantcontact.com/fs004/1101808979937/img/222.gif", :style => "margin-left: auto; margin-bottom: 5px; display: block;", :width => "590"}/
                 %p{:style => "border: 2px solid #912; margin: 0px; background-color: #912; padding: 10px; font-family: Futura, Arial Bold, sans-serif; color: #fff; text-align: right; text-transform: uppercase;"} 
-                  =data.page.issue || 'You need to add "issue: " data to the index page'
+                  Volume #{data.page.volume}, Issue #{data.page.issue} | #{data.page.date}
+                - current_page.data.articles.each do |page|
+                  = link_to page, '#'+page.to_s
                 = yield
+                - current_page.data.articles.each do |f|
+                  = partial f, :layout => 'layouts/partialWrap'
+                = partial "layouts/partials/events"
             %tr
               %td{:valign => "top", :width => "600", :colspan => "3"}
                 / Gmail/Hotmail image display fix

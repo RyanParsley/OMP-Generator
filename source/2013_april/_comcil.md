@@ -1,11 +1,6 @@
-![Comcil is back in action this term! Their next meeting is this
-Tuesday, April 30, to discuss some very important issues brought up last
-week at Community
-Meeting.](https://origin.ih.constantcontact.com/fs119/1101808979937/img/585.jpg)
-
-Comcil is back in action this term! Their next meeting is this Tuesday,
-April 30, to discuss some very important issues brought up last week at
-Community Meeting.
+---
+title: Comcil Data
+---
 
 ## :: Community Council Agenda for Tuesday, April 30 {style="border: 2px solid #912; background-color: #ddd; padding: 10px; font-family: Arial, Helvetica, sans-serif; color: #333"}
 

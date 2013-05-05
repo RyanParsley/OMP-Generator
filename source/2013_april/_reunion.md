@@ -1,3 +1,7 @@
+---
+title: It's Reunion time!
+---
+
 ## It's Reunion time! {style="border: 2px solid #912; background-color: #ddd; padding: 10px; font-family: Arial, Helvetica, sans-serif; color: #333"}
 
 It's that time again. Reunion 2013 is just around the corner: Friday,
