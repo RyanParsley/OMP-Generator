@@ -165,7 +165,6 @@
                 = yield
                 - @pages = current_page.children
                 - for page in @pages
-                  %h2{ :id => page.url }= ":: " + page.data.title.to_s
                   = render :markdown, page.url
                 - if current_page.data.events
                   = partial "layouts/partials/events"
