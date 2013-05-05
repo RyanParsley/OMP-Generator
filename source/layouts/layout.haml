@@ -21,7 +21,7 @@
       .ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */  
       .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
       /* Forces Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */ 
-      #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important; background:#efefef;}
+      #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important; background:#ffffff;}
       /* End reset */
 
       /* Some sensible defaults for images
@@ -58,7 +58,16 @@
 
       /* Styling your links has become much simpler with the new Yahoo.  In fact, it falls in line with the main credo of styling in email and make sure to bring your styles inline.  Your link colors will be uniform across clients when brought inline.
       Bring inline: Yes. */
-      a {color: orange;}
+      a {color: #912;}
+
+      h2 {
+        border: 2px solid #912; 
+        background-color: #ddd; 
+        padding: 10px; 
+        font-family: Arial, Helvetica, sans-serif; 
+        color: #333"
+        }
+
 
 
       /***************************************************
@@ -141,30 +150,45 @@
       %tr
         %td{:valign => "top"}
           / Tables are the most common way to format your email consistently. Set your table widths inside cells and in most cases reset cellpadding, cellspacing, and border to zero. Use nested tables as a way to space effectively in your message.
-          %table{:align => "center", :border => "0", :cellpadding => "20", :cellspacing => "0", :bgcolor => "#ffffff"}
+          %table{:align => "center", :border => "0", :cellpadding => "20", :cellspacing => "0", :bgcolor => "#ffffff", :style => "border:solid 1px #000; margin-top:20px;"}
             %tr
               %td{:valign => "top", :width => "600", :colspan => "3"}
-                %img{:alt => "ONE MORGAN PLACE :: Community Bulletin", :border => "0", :src => "https://origin.ih.constantcontact.com/fs004/1101808979937/img/222.gif", :style => "margin-left: auto; margin-bottom: 5px; display: block;", :width => "590"}/
+                %img{:alt => "ONE MORGAN PLACE :: Community Bulletin", :border=> "0", :src => "https://origin.ih.constantcontact.com/fs004/1101808979937/img/222.gif", :style => "margin-left: auto; margin-bottom: 5px; display: block;", :width => "590"}/
                 %p{:style => "border: 2px solid #912; margin: 0px; background-color: #912; padding: 10px; font-family: Futura, Arial Bold, sans-serif; color: #fff; text-align: right; text-transform: uppercase;"} 
                   Volume #{data.page.volume}, Issue #{data.page.issue} | #{data.page.date}
-                - current_page.data.articles.each do |page|
-                  = link_to page, '#'+page.to_s
+                %p{:style => "font-size:12px;line-height:16px;font-family:Arial,Helvetica,sans-serif;color:#010101;font-weight:bold;width:580px;margin-left:auto;margin-right:auto"}
+                  <span style="color:#912">IN THIS ISSUE:</span>
+                  - for page in current_page.children
+                    = link_to page.data.title, '#'+page.url, :style => "color:#010101; text-decoration:none"
+                    <span style="font-family:Arial Black,Arial Bold,Helvetica Bold,sans-serif;line-height:14px;font-size:14px;color:#991122;font-weight:bold">::</span>
                 = yield
-                - current_page.data.articles.each do |f|
-                  = partial f, :layout => 'layouts/partialWrap'
-                = partial "layouts/partials/events"
+                - @pages = current_page.children
+                - for page in @pages
+                  %h2{ :id => page.url }= ":: " + page.data.title.to_s
+                  = render :markdown, page.url
+                - if current_page.data.events
+                  = partial "layouts/partials/events"
             %tr
               %td{:valign => "top", :width => "600", :colspan => "3"}
                 / Gmail/Hotmail image display fix
-                %img.image_fix{:alt => "Your alt text", :height => "x", :src => "https://origin.ih.constantcontact.com/fs004/1101808979937/img/228.gif", :title => "College logo in black", :width => "113"}/
                 /
                   Working with telephone numbers (including sms prompts).  Use the "mobile" class to style appropriately in desktop clients
                   versus mobile clients.
-                :markdown
-                    SUBMISSION DEADLINE:
-                    THURSDAY AT NOON
-
+                %div{:style => "padding:10px 0px 10px 10px;width:590px;min-height:111px;border:0px;margin:0px;padding:10px;background-color:#0e0e0e!important"}
+                  %img.image_fix{:style => "float:right;display:inline", :alt => "Your alt text", :height => "x", :src => "https://origin.ih.constantcontact.com/fs004/1101808979937/img/228.gif", :title => "College logo in black", :width => "113"}/
+                  %p{:style => "line-height:17px;color:#ffffff;text-align:left;font-family:Arial Black,Arial Bold,Helvetica,sans-serif;font-size:16px;line-height:18px;margin:0px 0px 5px 0px"}
+                    %span{:style => "color:#cbcbcb"}
+                      %br>/
+                      SUBMISSION DEADLINE:
+                    = succeed "THURSDAY" do
+                      %br/
+                    AT NOON
+                  %p{:style => "line-height:17px;font-size:10pt;color:#ffffff;text-align:left;font-weight:bold;font-family:Arial,Helvetica,sans-serif"}
                     Send items for inclusion in
-                    *One Morgan Place* to Nicole Wroten at
-                    [nwroten@antiochcollege.org.](mailto:nwroten@antiochcollege.org)
-    / End of wrapper table
+                    %br/
+                    %em
+                      %span.il One
+                      %span.il Morgan
+                      %span.il Place
+                    to Nicole Wroten at
+                    %a{:href => "mailto:nwroten@antiochcollege.org", :style => "color:#ffffff;font-weight:bold;text-decoration:none;font-size:10pt", :target => "_blank"} nwroten@antiochcollege.org.
