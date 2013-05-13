@@ -32,7 +32,7 @@
 
       /* Yahoo paragraph fix
       Bring inline: Yes. */
-      p,ul {margin: 1em 0; font-size:12px;}
+      p,ul,ol {margin: 1em 0; font-size:12px;}
 
       /* Hotmail header color reset
       Bring inline: Yes. */
@@ -165,6 +165,7 @@
                 = yield
                 - @pages = current_page.children
                 - for page in @pages
+                  %h2= page.data.title
                   = render :markdown, page.url
                 - if current_page.data.events
                   = partial "layouts/partials/events"
